@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,EACI,iBAAmB,CAGvB,SACI,SAAW","file":"static/css/main.cd052552.css","sourcesContent":["a {\n    margin-right: 10px;\n}\n\na.active {\n    color: red;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/App.css"],"sourceRoot":""}
