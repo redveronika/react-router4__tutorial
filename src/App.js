@@ -2,7 +2,7 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    NavLink, Switch, Redirect
+    NavLink, Switch, Redirect, Prompt
 } from 'react-router-dom';
 import './App.css';
 
@@ -18,6 +18,7 @@ const Links = () => (
         <NavLink isActive={isActiveFunc} activeClassName="active" to="/contact" >Contact</NavLink>
         <NavLink isActive={isActiveFunc} activeClassName="active" to="/old-page" >Old page</NavLink>
         <NavLink isActive={isActiveFunc} activeClassName="active" to="/new-page" >New page</NavLink>
+        <NavLink isActive={isActiveFunc} activeClassName="active" to="/form" >Form</NavLink>
         <NavLink isActive={isActiveFunc} activeClassName="active" to="/404" >404</NavLink>
         <NavLink isActive={isActiveFunc} activeClassName="active" to="/sign-in" >Sign In</NavLink>
     </nav>
@@ -50,6 +51,20 @@ const Contact = () => (
     </section>
 );
 
+class Form extends React.Component {
+    state = {dirty: false};
+    setDirty = () => this.setState({dirty: true})
+    render() {
+        return (
+            <section>
+                <h1>Form</h1>
+                <input type="text" onInput={this.setDirty}/>
+                <Prompt when={this.state.dirty} message="You will lost all input data!"/>
+            </section>
+        )
+    }
+}
+
 const App = () => (
     <Router>
         <div>
@@ -72,6 +87,8 @@ const App = () => (
                         ? <h1>Welcome USERNAME</h1>
                         : <h1>You need to register!</h1>
                 )} />
+
+                <Route path="/form" component={Form}/>
 
                 <Route render={() => <h1>Page not found</h1>}/>
             </Switch>
